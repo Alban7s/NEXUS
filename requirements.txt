@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+httpx
+kubernetes
+boto3
+docker
+python-multipart
+pyyaml

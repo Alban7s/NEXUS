@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS — DevOps Control Plane</title>
+<meta name="description" content="NEXUS is an end-to-end DevOps control plane connecting CI/CD, security, infrastructure, Kubernetes, GitOps and observability.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2216%22 fill=%22%232563EB%22/><text x=%2216%22 y=%2222%22 font-family=%22sans-serif%22 font-weight=%22700%22 font-size=%2218%22 fill=%22white%22 text-anchor=%22middle%22>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand" aria-label="NEXUS home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30"><defs><linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><circle cx="16" cy="16" r="16" fill="url(#brandGrad)"/><path d="M11 21V11h1.8l6.2 7.1V11H21v10h-1.8l-6.2-7.1V21H11z" fill="#fff"/></svg>
+      </span>
+      <span class="brand-name">NEXUS</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#deploy" class="nav-link" data-nav>Deploy</a></li>
+        <li><a href="#platform" class="nav-link" data-nav>Platform</a></li>
+        <li><a href="#architecture" class="nav-link" data-nav>Architecture</a></li>
+        <li><a href="#deployments" class="nav-link" data-nav>Deployments</a></li>
+        <li><a href="#observability" class="nav-link" data-nav>Observability</a></li>
+        <li><a href="#security" class="nav-link" data-nav>Security</a></li>
+        <li><a href="#gitops" class="nav-link" data-nav>GitOps</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <span class="status-pill" id="header-status">
+        <span class="status-dot status-dot--gray" aria-hidden="true"></span>
+        <span>Not connected</span>
+      </span>
+      <a class="btn btn--ghost btn--sm" href="https://github.com" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.22-3.37-1.22-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+        <span>GitHub</span>
+        <svg class="ext-icon" width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6h8v2H8v8H6V6zm10 0h6v6h-2V9.4l-8.3 8.3-1.4-1.4L18.6 8H16V6z"/></svg>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO / RELEASE INTAKE ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="glow glow--blue"></div>
+    <div class="glow glow--violet"></div>
+    <div class="glow glow--cyan"></div>
+    <div class="glow glow--green"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-copy reveal">
+      <div class="hero-badges">
+        <span class="status-pill status-pill--live">
+          <span class="status-dot status-dot--gray" aria-hidden="true"></span>
+          Release autopilot
+        </span>
+        <span class="tag-pill">Static + Node frontends</span>
+      </div>
+
+      <p class="eyebrow">Your release, on autopilot</p>
+
+      <h1 class="hero-title">
+        Upload your site.<br>
+        <span class="grad-text">NEXUS runs the release.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Give NEXUS one ZIP. It inspects, builds, checks, publishes, deploys, and verifies your static or Node-built frontend while you follow the real release log.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#deploy" class="btn btn--primary">
+          Start a release
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#recent-releases" class="btn btn--secondary">View releases</a>
+      </div>
+
+      <p class="hero-footnote">You upload website files only. NEXUS does not expect Dockerfiles, registry credentials, Kubernetes manifests, or secrets inside the ZIP.</p>
+    </div>
+
+    <div class="hero-upload-card reveal" id="deploy">
+      <form id="deploy-form" novalidate>
+        <div class="release-card-head">
+          <div>
+            <p class="release-kicker">Release intake</p>
+            <h2>One file is enough to begin.</h2>
+          </div>
+          <span class="release-ready"><span aria-hidden="true"></span> Ready for upload</span>
+        </div>
+
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload a ZIP file to release">
+          <input type="file" id="deploy-file-input" accept=".zip,application/zip" hidden>
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0-12 5 5m-5-5-5 5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="dropzone-title">Drop your website ZIP here</p>
+          <p class="dropzone-sub" id="dropzone-file-name">or browse files · static sites and Node frontends · 300MB maximum</p>
+        </div>
+
+        <div class="deploy-form-row">
+          <label class="deploy-label" for="deploy-app-name">Project name <span>Optional — otherwise NEXUS derives one from the archive.</span></label>
+          <input type="text" id="deploy-app-name" class="deploy-input" placeholder="e.g. marketing-site" autocomplete="off">
+        </div>
+
+        <div class="deploy-form-row deploy-access-key" id="deploy-access-key-wrap" hidden>
+          <label class="deploy-label" for="deploy-access-key">Deployment access key <span>Sent only with this release request; never stored in the browser.</span></label>
+          <input type="password" id="deploy-access-key" class="deploy-input" autocomplete="off" spellcheck="false">
+          <p class="deploy-field-note">This local key protects the upload endpoint. Production should use proper user authentication and dedicated build runners.</p>
+        </div>
+
+        <button type="submit" class="btn btn--primary" id="deploy-submit" disabled>
+          <span>Run release</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 12h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+
+      <section class="deploy-progress" id="deploy-progress" aria-labelledby="release-steps-title">
+        <div class="autopilot-head">
+          <div>
+            <p class="release-kicker">NEXUS handles this automatically</p>
+            <h3 id="release-steps-title">A release is visible at every step.</h3>
+          </div>
+          <div class="data-source" id="deploy-mode-indicator" aria-live="polite"></div>
+        </div>
+        <ol class="deploy-steps" id="deploy-steps">
+          <li class="deploy-step" data-step="upload" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Upload</strong><small>Waiting</small></span></li>
+          <li class="deploy-step" data-step="inspect" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Inspect</strong><small>Waiting</small></span></li>
+          <li class="deploy-step" data-step="build" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Build</strong><small>Waiting</small></span></li>
+          <li class="deploy-step" data-step="security" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Security gate</strong><small>Waiting</small></span></li>
+          <li class="deploy-step" data-step="publish" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Publish</strong><small>Waiting</small></span></li>
+          <li class="deploy-step" data-step="deploy" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Deploy</strong><small>Waiting</small></span></li>
+          <li class="deploy-step" data-step="verify" data-status="pending"><span class="deploy-step-dot" aria-hidden="true"></span><span class="deploy-step-copy"><strong>Verify</strong><small>Waiting</small></span></li>
+        </ol>
+      </section>
+
+      <div class="deploy-live-details" id="deploy-live-details" hidden>
+        <div class="deploy-result" id="deploy-result" hidden aria-live="polite"></div>
+        <p class="terminal-label">Live release log</p>
+        <pre class="deploy-console" id="deploy-console" aria-live="polite"></pre>
+      </div>
+
+      <p class="safety-note"><strong>Built with care.</strong> Uploads are treated as untrusted build input. Use a dedicated runner in production; NEXUS never asks you to put secrets in a ZIP.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT RELEASES ============ -->
+<section class="section release-history" id="recent-releases">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Release record</p>
+        <h2 class="section-title-sm">Recent releases</h2>
+        <p class="section-sub">Each row is a real NEXUS job. A skipped stage means that capability was not applicable or its tool was unavailable — never that it silently succeeded.</p>
+      </div>
+    </div>
+    <div class="panel-surface">
+      <div class="table-scroll">
+        <table class="data-table" id="deploy-jobs-table">
+          <thead>
+            <tr><th>App</th><th>Mode</th><th>Status</th><th>Image</th><th>When</th><th></th></tr>
+          </thead>
+          <tbody id="deploy-jobs-body"></tbody>
+        </table>
+      </div>
+      <div class="panel-empty" id="deploy-jobs-empty" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATFORM / DELIVERY PIPELINE ============ -->
+<section class="section" id="platform">
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="eyebrow">Platform visibility</p>
+      <h2 class="section-title">See the systems behind the release.</h2>
+      <p class="section-sub">Optional integrations and operational dashboards stay below the release workflow. NEXUS marks an unavailable source instead of inventing a result.</p>
+    </div>
+
+    <div class="pipeline" id="pipeline-list">
+      <!-- rendered by main.js: 01 SOURCE ... 09 OBSERVE -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL ARCHITECTURE ============ -->
+<section class="section section--tint" id="architecture-full">
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="eyebrow">Architecture</p>
+      <h2 class="section-title" id="architecture">Code enters here. Production comes out here.</h2>
+      <p class="section-sub">A single, linear path from developer to running workload — every layer visible, every handoff explicit.</p>
+    </div>
+
+    <div class="arch-flow" id="arch-flow">
+      <!-- rendered by main.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEPLOYMENTS ============ -->
+<section class="section" id="deployments">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Delivery</p>
+        <h2 class="section-title-sm">Deployments</h2>
+      </div>
+      <div class="data-source" id="deployments-source"></div>
+    </div>
+    <div class="panel-surface">
+      <div class="table-scroll">
+        <table class="data-table" id="deployments-table">
+          <thead>
+            <tr>
+              <th>Application</th><th>Environment</th><th>Version</th><th>Commit</th>
+              <th>Branch</th><th>Author</th><th>Duration</th><th>Status</th><th>Health</th>
+            </tr>
+          </thead>
+          <tbody id="deployments-body"></tbody>
+        </table>
+      </div>
+      <div class="panel-empty" id="deployments-empty" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CI/CD PIPELINE RUN ============ -->
+<section class="section section--tint">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">CI/CD</p>
+        <h2 class="section-title-sm">Pipeline run</h2>
+      </div>
+      <div class="data-source" id="cicd-source"></div>
+    </div>
+    <div class="panel-surface" id="cicd-panel"></div>
+  </div>
+</section>
+
+<!-- ============ KUBERNETES ============ -->
+<section class="section" id="kubernetes">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Orchestration</p>
+        <h2 class="section-title-sm">Kubernetes · EKS</h2>
+      </div>
+      <div class="data-source" id="k8s-source"></div>
+    </div>
+    <div class="stat-grid" id="k8s-grid"></div>
+  </div>
+</section>
+
+<!-- ============ OBSERVABILITY ============ -->
+<section class="section section--tint" id="observability">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Observability</p>
+        <h2 class="section-title-sm">Metrics &amp; logs</h2>
+      </div>
+      <div class="data-source" id="obs-source"></div>
+    </div>
+    <div class="dash-grid" id="obs-grid"></div>
+
+    <div class="logs-block">
+      <div class="logs-head">
+        <h3 class="block-title">Logs</h3>
+        <div class="log-filters" id="log-filters">
+          <button class="chip is-active" data-level="ALL">All</button>
+          <button class="chip" data-level="INFO">Info</button>
+          <button class="chip" data-level="WARN">Warn</button>
+          <button class="chip" data-level="ERROR">Error</button>
+        </div>
+      </div>
+      <div class="logs-console" id="logs-console"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GITOPS ============ -->
+<section class="section" id="gitops">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">GitOps</p>
+        <h2 class="section-title-sm">Argo CD applications</h2>
+      </div>
+      <div class="data-source" id="gitops-source"></div>
+    </div>
+    <div class="card-grid" id="gitops-grid"></div>
+  </div>
+</section>
+
+<!-- ============ SECURITY ============ -->
+<section class="section section--tint" id="security">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Security</p>
+        <h2 class="section-title-sm">Supply-chain scanning</h2>
+      </div>
+      <div class="data-source" id="security-source"></div>
+    </div>
+
+    <div class="scan-flow" id="scan-flow"></div>
+
+    <div class="panel-surface">
+      <div class="table-scroll">
+        <table class="data-table" id="security-table">
+          <thead>
+            <tr><th>Severity</th><th>Scanner</th><th>Target</th><th>CVE / Rule</th><th>Status</th><th>Detected</th></tr>
+          </thead>
+          <tbody id="security-body"></tbody>
+        </table>
+      </div>
+      <div class="panel-empty" id="security-empty" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFRASTRUCTURE / TERRAFORM ============ -->
+<section class="section" id="infrastructure">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="section-title-sm">Terraform · AWS</h2>
+      </div>
+      <div class="data-source" id="infra-source"></div>
+    </div>
+    <div class="stat-grid" id="infra-grid"></div>
+    <div class="aws-stack" id="aws-stack"></div>
+  </div>
+</section>
+
+<!-- ============ FINOPS ============ -->
+<section class="section section--tint" id="finops">
+  <div class="section-inner">
+    <div class="panel-head">
+      <div>
+        <p class="eyebrow">FinOps</p>
+        <h2 class="section-title-sm">Cost visibility</h2>
+      </div>
+      <div class="data-source" id="cost-source"></div>
+    </div>
+    <div class="panel-surface" id="cost-panel"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26"><circle cx="16" cy="16" r="16" fill="#0B1220"/><path d="M11 21V11h1.8l6.2 7.1V11H21v10h-1.8l-6.2-7.1V21H11z" fill="#fff"/></svg>
+      </span>
+      <div>
+        <p class="footer-name">NEXUS</p>
+        <p class="footer-tag">DevOps control plane</p>
+      </div>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#platform">Platform</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#observability">Observability</a>
+      <a href="#security">Security</a>
+      <a href="#gitops">GitOps</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+
+    <p class="footer-note">NEXUS is an independent engineering project built to demonstrate a real CI/CD → GitOps → observability pipeline. Operational values are shown only when returned by connected integrations.</p>
+  </div>
+</footer>
+
+<script src="api.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

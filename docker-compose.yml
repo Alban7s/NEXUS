@@ -1,0 +1,26 @@
+services:
+  nexus-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    env_file:
+      - .env
+
+    environment:
+      KUBECONFIG: /root/.kube/config
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      # Docker daemon access for NEXUS build/deploy pipeline
+      - /var/run/docker.sock:/var/run/docker.sock
+
+      # Persistent job workspace
+      - ./nexus-jobs:/tmp/nexus-jobs
+
+      # AWS EKS kubeconfig — read-only inside NEXUS
+      - /home/ubuntu/.kube/config:/root/.kube/config:ro
+
+    restart: unless-stopped
