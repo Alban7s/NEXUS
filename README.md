@@ -117,3 +117,10 @@ Next milestones:
 9. add Loki
 10. add Cost Explorer
 11. replace remaining unavailable endpoints with live data
+
+## Deployment Verification
+
+- Local Kubernetes: Kind
+- Local replicas: 2
+- EKS workload: AWS Fargate
+- Container registry: Amazon ECR
