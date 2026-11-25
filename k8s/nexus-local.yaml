@@ -17,16 +17,16 @@ spec:
     spec:
       containers:
         - name: nexus
-          image: nexus:1789897469
-          imagePullPolicy: Never
+          image: nexus:latest
+          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 8000
           readinessProbe:
             httpGet:
-              path: /healthz
-              port: 80
-            initialDelaySeconds: 3
-            periodSeconds: 5
+              path: /api/health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             requests:
               cpu: 50m
@@ -34,7 +34,6 @@ spec:
             limits:
               cpu: 250m
               memory: 256Mi
-
 ---
 apiVersion: v1
 kind: Service
@@ -48,5 +47,5 @@ spec:
     app: nexus
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 8000
   type: NodePort
