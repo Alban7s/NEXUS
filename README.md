@@ -1,4 +1,4 @@
-# NEXUS — Live Data Foundation
+.# NEXUS — Live Data Foundation
 
 NEXUS is an upload-first release control plane. Upload one `.zip` containing a static website or Node-built frontend; NEXUS inspects it, builds it, applies the available release gates, publishes it when a registry target exists, deploys it, and records what it could actually verify.
 
