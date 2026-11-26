@@ -1,0 +1,33 @@
+---
+- name: NEXUS Infrastructure Checks
+  hosts: local
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Display server hostname
+      debug:
+        msg: "Ansible is running on {{ inventory_hostname }}"
+
+    - name: Check disk space
+      command: df -h /
+      register: disk
+      changed_when: false
+
+    - name: Display disk usage
+      debug:
+        var: disk.stdout_lines
+
+    - name: Display total memory
+      debug:
+        msg: "Total RAM: {{ ansible_memtotal_mb }} MB"
+
+    - name: Check Docker installation
+      command: docker --version
+      register: docker
+      failed_when: false
+      changed_when: false
+
+    - name: Display Docker version
+      debug:
+        msg: "{{ docker.stdout | default('Docker not installed') }}"
